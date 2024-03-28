@@ -1,0 +1,770 @@
+@use 'fonts';
+
+$primary: #8650d4;
+$secondary: #60b4f0;
+$neutral: #1a0736;
+$white: #fff;
+$base: #ecf7ff;
+$info: #2dc8eb;
+$success: #23c88d;
+$warning: #ff9776;
+$error: #fa4c76;
+$blue: #203ca1;
+$mainFont: 'Robo';
+$accentFont: 'Michroma';
+
+.bigNumber {
+    @apply text-6xl mr-3 bg-clip-text bg-gradient-to-b from-secondary to-primary text-transparent font-bold;
+}
+
+.gradButton {
+    @apply text-base-100 btn btn-primary;
+    border: none;
+    font-family: $accentFont;
+    transition: all 0.5s;
+    &:hover {
+        @apply text-base-100 btn-secondary;
+        transition: all 0.5s;
+    }
+}
+
+.wideList {
+    @apply flex flex-col gap-5;
+    .companyList {
+        .location {
+            width: 200px;
+        }
+        .industry {
+            width: 200px;
+        }
+    }
+}
+
+.numberCircle {
+    @apply bg-primary text-base-100 absolute top-2 right-5 font-bold;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listCard,
+.skillCard {
+    @apply bg-white w-full p-5 rounded-md shadow-sm shadow-accent/15 text-black/60 relative;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    thead {
+        th {
+            @apply text-primary border-b-2 border-primary font-normal pb-3 text-left;
+            font-family: $accentFont;
+        }
+    }
+    tbody {
+        tr {
+            @apply shadow-sm shadow-accent/15 rounded-lg bg-white text-primary overflow-hidden;
+        }
+        td {
+            @apply px-3 py-5;
+            &:first-of-type {
+                @apply rounded-l-lg pl-5;
+            }
+            &:last-of-type {
+                @apply rounded-r-lg pr-5;
+            }
+            &.logo {
+                @apply pl-2 pr-2 overflow-hidden;
+                a {
+                    @apply flex justify-center items-center;
+                    height: 100%;
+                }
+                img {
+                    max-height: 24px;
+                    width: auto;
+                    filter: drop-shadow(0 0 2px rgba($blue, 0.25));
+                }
+            }
+        }
+    }
+}
+
+.skills {
+    .have {
+        @apply block;
+        width: 37px;
+        .box {
+            @apply border rounded-sm shadow-sm shadow-accent/15;
+            height: 25px;
+            width: 25px;
+            &.checked {
+                @apply shadow-none border-none bg-secondary/50;
+            }
+        }
+    }
+    .name {
+        min-width: 200px;
+    }
+    .skillCard {
+        @apply flex gap-5;
+        svg {
+            margin: 0;
+        }
+    }
+    .wideList {
+        margin-top: 0.5rem;
+    }
+}
+
+input,
+textarea {
+    @apply w-full p-3 rounded-lg border border-secondary/50 mb-5;
+    &:focus-visible {
+        @apply outline-primary/75 outline;
+    }
+}
+
+textarea {
+    min-height: 250px;
+    &#location {
+        min-height: 64px;
+    }
+}
+
+fieldset {
+    @apply border border-secondary px-5 rounded-lg;
+    legend {
+        @apply p-2 bg-base-100 text-secondary;
+        font-size: 1.15rem;
+        font-family: $accentFont;
+    }
+    .sourceBox {
+        width: 15%;
+    }
+}
+
+form {
+    @apply w-full;
+
+    p {
+        @apply text-secondary px-5 py-2;
+    }
+    .formLine {
+        @apply flex gap-5;
+        label {
+            @apply grow;
+            &.narrow {
+                @apply grow-0 w-1/4;
+            }
+        }
+    }
+}
+
+body {
+    font-family: $mainFont;
+}
+
+h1,
+h2,
+h3 {
+    font-family: $accentFont;
+}
+
+nav.sidePanel {
+    @apply text-base-100 fixed h-screen bg-gradient-to-b from-secondary to-primary;
+    // background-image: linear-gradient($secondary, $primary);
+    font-family: $accentFont;
+    border-radius: 0 50px 50px 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    h1 {
+        @apply border-b-8 border-base-100;
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 2rem 3rem 2rem;
+    }
+    .links {
+        margin: 2rem auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        .linkWrap,
+        .linkGroup {
+            display: flex;
+            gap: 1rem;
+        }
+        .subLinkWrap {
+            @apply border-base-100 border-t-2 before:border-base-100 before:border-b-2 before:border-l-2;
+            svg {
+                display: none;
+            }
+        }
+        .linkWrap {
+            padding: 0.5rem 3rem;
+        }
+        .linkGroup {
+            flex-direction: column;
+            gap: 0;
+        }
+        .subLinkWrap {
+            font-size: 0.75rem;
+            display: flex;
+            margin-left: 3.25rem;
+            padding: 10px 10px 10px 0;
+            &::before {
+                height: 1.25rem;
+                width: 1rem;
+                margin-top: -10px;
+                content: '';
+                display: block;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+    .sideBottom {
+        margin: auto auto 1.5rem auto;
+        text-align: center;
+    }
+}
+
+.page {
+    margin-left: 300px;
+    padding: 2rem;
+    .autoSaveSpinner {
+        position: absolute;
+        z-index: 999;
+        right: 10px;
+        top: 10px;
+    }
+    h1 {
+        @apply text-primary;
+        padding-left: 2rem;
+    }
+    h2 {
+        @apply text-secondary;
+        font-size: 1.5rem;
+    }
+    a {
+        @apply text-secondary;
+        svg {
+            margin-right: 0.5rem;
+            margin-top: 1rem;
+        }
+    }
+    .header {
+        margin-bottom: 1rem;
+        h1 {
+            padding: 0;
+            font-size: 3rem;
+        }
+        img {
+            height: 75px;
+            width: auto;
+        }
+        .linkButtons {
+            a {
+                @apply text-white;
+            }
+        }
+    }
+    &.listing {
+        .header {
+            margin-bottom: 0.5rem;
+        }
+
+        .underHeader {
+            svg {
+                @apply text-secondary/50;
+            }
+        }
+    }
+    &.notes {
+        .noteBox {
+            background-color: transparent;
+            .date {
+                border-radius: 0;
+            }
+            .textBlock {
+                @apply p-4;
+                max-width: 100%;
+            }
+            p:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+        .note {
+            @apply border border-secondary rounded-lg mb-5;
+        }
+        .addNote {
+            position: relative;
+            .iconWrap {
+                @apply flex justify-center items-center;
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 100%;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+
+    .spinnerWrap {
+        @apply bg-secondary/40;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        padding-top: 15%;
+        height: 100vh;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+    .col {
+        width: calc(50% - 1rem);
+    }
+}
+
+.side {
+    &.sideDetails {
+        width: 725px;
+    }
+    &.notes {
+        max-width: 700px;
+    }
+    input[type='checkbox'] {
+        border: none;
+        margin-bottom: 0;
+    }
+    .collapse-arrow > .collapse-title:after {
+        opacity: 0.35;
+    }
+}
+
+.textBlock {
+    padding: 1rem 0;
+    max-width: 700px;
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        list-style-type: disc;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.map,
+.noMap {
+    @apply shadow-lg shadow-accent/15;
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
+    margin-bottom: 2rem;
+    height: 250px;
+    background-color: rgba(13, 69, 104, 0.2);
+}
+
+.noMap {
+    @apply flex items-center justify-center;
+    h2 {
+        @apply text-neutral/50;
+    }
+}
+
+.newCompanyPage {
+    .logo {
+        height: 200px;
+        width: 200px;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+}
+
+.companyCard {
+    @apply bg-white w-full p-5 rounded-xl shadow-sm shadow-accent/15 text-black/60 relative;
+}
+
+.btn {
+    font-family: $accentFont;
+}
+
+.btn-secondary {
+    @apply text-base-100;
+}
+.autoComplete {
+    position: relative;
+    z-index: 5;
+    input,
+    label {
+        position: relative;
+        z-index: 1;
+    }
+    .box {
+        @apply w-full bg-white absolute shadow-lg shadow-accent/15 flex flex-col gap-2 text-secondary;
+        top: calc(100% - 1.25rem + 3px);
+        z-index: 995;
+        span {
+            @apply px-5 py-2 text-left hover:bg-base-100;
+            z-index: 999;
+        }
+    }
+}
+
+.details {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    .pale,
+    .dimmed {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .icon {
+            @apply text-primary/65;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .pale {
+        @apply text-primary/50;
+    }
+    .dimmed {
+        @apply text-neutral/40;
+    }
+}
+
+.skillsList {
+    padding: 1rem 0;
+    .skill {
+        @apply bg-secondary/15 px-4 py-2 rounded-md text-secondary;
+    }
+}
+
+.spinner {
+    @apply border-t-primary/50 border-x-primary/50 border-b-transparent;
+    height: 50px;
+    width: 50px;
+    border-radius: 1000px;
+    border-style: solid;
+    border-width: 10px;
+    animation: rotation 2s infinite linear;
+
+    &.small {
+        height: 25px;
+        width: 25px;
+        border-width: 7px;
+    }
+
+    &.large {
+        height: 100px;
+        width: 100px;
+        border-width: 20px;
+    }
+}
+
+.notes {
+    .noteHeader {
+        font-size: 2.5rem;
+    }
+    .noteBox {
+        @apply bg-secondary/15 rounded-xl mb-6 p-5;
+        overflow: hidden;
+        .date {
+            @apply bg-secondary/15 font-bold text-secondary py-2 px-5 text-right rounded-full;
+        }
+        .noteBody {
+            @apply flex flex-col gap-2 my-6 px-8;
+        }
+    }
+}
+
+.Toastify {
+    .Toastify__toast--error {
+        svg {
+            fill: $error;
+        }
+    }
+}
+
+.fade {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+.vShrink {
+    // transform: scale(1, 0);
+    margin-top: -9%;
+    transition: margin 0.3s ease-out 0.3s;
+}
+
+/* Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+gmp-map {
+    height: 100%;
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.Modal {
+    @apply bg-base-100 p-10 rounded-xl shadow-lg shadow-accent/50;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    right: 60px;
+    border: none;
+    outline: none;
+    input {
+        margin-bottom: 0;
+    }
+    .loaderBox {
+        width: 30px;
+    }
+    .close {
+        @apply shadow-sm shadow-accent/75;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+    }
+    h1 {
+        @apply text-primary;
+        font-size: 2rem;
+        font-family: $accentFont;
+    }
+    .swap {
+        input[type='checkbox'] {
+            border: none;
+            margin-bottom: 0;
+        }
+        .swap-option {
+            @apply p-3 rounded-lg flex justify-center items-center;
+            min-width: 100px;
+            min-height: 52px;
+        }
+    }
+    label {
+        span {
+            font-family: $accentFont;
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+    }
+    .formLine {
+        margin-bottom: 2rem;
+        gap: 2.5rem;
+    }
+    .bottomLine {
+        @apply flex justify-between items-center;
+        .archive {
+            .btn {
+                @apply flex justify-center items-center;
+                width: 200px;
+            }
+        }
+    }
+}
+
+.page.dashboard {
+    min-height: 100vh;
+    a,
+    a h3 {
+        @apply w-full flex gap-4 items-center;
+        svg {
+            margin: 0;
+        }
+    }
+    a h3 {
+        @apply text-primary;
+    }
+}
+
+.dashCard {
+    @apply bg-white shadow-sm shadow-accent/15 p-5 rounded-lg;
+}
+
+.dashCol {
+    padding-bottom: 2rem;
+    h3 {
+        margin-bottom: 1rem;
+    }
+    .spinnerCol {
+        @apply w-full h-full flex justify-center items-center bg-secondary/15 rounded-lg;
+    }
+}
+
+.Overlay {
+    @apply bg-secondary/50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.hideText {
+    opacity: 0;
+    transition: opacity 0.25s ease-in;
+}
+
+.showText {
+    opacity: 1 !important;
+    transition: opacity 0.25s ease-out;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@media (max-width: 1540px) {
+    .formCols {
+        flex-direction: column;
+        .col {
+            width: 100%;
+        }
+        .largeFields textarea {
+            min-height: 200px;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .Modal {
+        .formLine {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    nav.sidePanel {
+        @apply sticky w-full h-min flex flex-row bg-gradient-to-r;
+        border-radius: 0;
+
+        h1 {
+            @apply border-b-0 text-nowrap;
+            margin: 1rem auto 1rem 3rem;
+            padding: 0.25rem 0 0;
+        }
+        .links {
+            @apply flex flex-row;
+            margin: 1rem;
+            .linkWrap {
+                padding: 0.5rem;
+            }
+            span {
+                display: none;
+            }
+            .linkGroup {
+                @apply flex flex-row gap-3 items-center;
+            }
+            .subLinkWrap {
+                border: 0;
+                margin-left: 0;
+                svg {
+                    display: block;
+                }
+                &::before {
+                    display: none;
+                }
+            }
+        }
+        .sideBottom {
+            display: none;
+        }
+    }
+    .page {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 745px) {
+    nav.sidePanel {
+        h1 {
+            display: none;
+        }
+        .links {
+            @apply w-full justify-between;
+            flex-wrap: wrap;
+            .linkWrap {
+                padding: 0;
+            }
+            .subLinkWrap {
+                padding: 0;
+            }
+        }
+    }
+}
+
+@media (max-width: 628px) {
+    .page {
+        .header {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    }
+    .details {
+        display: block;
+        margin-top: 1rem;
+    }
+    .underHeader {
+        margin-left: 0 !important;
+        gap: 10px !important;
+    }
+    .listing {
+        .dates {
+            svg {
+                display: none;
+            }
+            display: block;
+        }
+    }
+    .Modal {
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        .close {
+            top: 15px;
+            right: 15px;
+        }
+
+        .bottomLine {
+            justify-content: space-between;
+            .archive {
+                width: 100%;
+                .btn {
+                    margin-left: auto;
+                }
+            }
+            .bottomInfo {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 435px) {
+    nav.sidePanel {
+        .links {
+            @apply justify-center;
+        }
+    }
+}
